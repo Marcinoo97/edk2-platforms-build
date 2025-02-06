@@ -63,7 +63,7 @@ jobs:
             device-tree-compiler
           sudo apt-get clean
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: true 
       - run: git submodule foreach git submodule update --init --force --depth=1
@@ -84,7 +84,7 @@ jobs:
             -p ${{ matrix.config.dscfile }} \
             -a ${{ matrix.config.arch }}
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.config.platformname }}_${{ matrix.buildtarget }}_${{ env.toolchain }}
           path: Build/*/${{ matrix.buildtarget }}_${{ env.toolchain }}/FV/*.fd
